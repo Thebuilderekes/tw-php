@@ -11,7 +11,7 @@ $hashedPassword = password_hash($plainPassword, PASSWORD_DEFAULT);
 require 'Database.php';
 
 
-// Usage example (assuming you have a valid .env file)
+
 $form_data_db = new Database($hostname, $dbname, $username, $password);
 $sql = "INSERT INTO user_form_data (name, password) VALUES (:name, :password)";
 $params = [":name" => $name, ":password"=> $hashedPassword];

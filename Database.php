@@ -1,19 +1,22 @@
 <?php
-require __DIR__ . '/vendor/phanda-framework/dotenv/src/Phanda/Dotenv/Dotenv.php';
- use Dotenv\Dotenv;
-class Database {
 
+  require "./vendor/autoload.php";
+  use Dotenv\Dotenv;
+
+class Database {
+  public  $hostname; 
+   public $dbname;
+   public $username;
+   public $password;
   protected $connection;
   
-  public function __construct($hostname, $dbname, $username, $password) {
-    $dotenv = Dotenv::createImmutable(__DIR__);
-     $dotenv->load();
-
-
-     $hostname = $_ENV['HOSTNAME'];
-     $dbname = $_ENV['DBNAME'];
-     $username = $_ENV['USERNAME'];
-     $password = $_ENV['PASSWORD'];
+  public function __construct() {
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/src");
+    $dotenv->load();
+     $hostname = getenv('HOSTNAME');
+     $dbname = getenv('DBNAME');
+     $username = getenv('USERNAME');
+     $password = getenv('PASSWORD');
      
     // Connect to the database
     try {

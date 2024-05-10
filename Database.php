@@ -10,7 +10,7 @@ class Database {
    public $password;
   protected $connection;
   
-  public function __construct() {
+  public function __construct($hostname, $dbname, $username, $password ) {
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/src");
     $dotenv->load();
      $hostname = getenv('HOSTNAME');

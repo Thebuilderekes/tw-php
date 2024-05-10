@@ -17,3 +17,4 @@ $sql = "INSERT INTO user_form_data (name, password) VALUES (:name, :password)";
 $params = [":name" => $name, ":password"=> $hashedPassword];
 $form_data_db->query($sql, $params);
 
+echo $name;

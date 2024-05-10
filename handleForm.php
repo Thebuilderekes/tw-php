@@ -1,11 +1,5 @@
 <?php
 
-$config = parse_ini_file(__DIR__ . "/config.ini", true);
-
-$hostname = $config['database']['hostname'];
-$dbname = $config['database']['dbname'];
-$username = $config['database']['username'];
-$password = $config['database']['password'];
 
 // Get the form data from POST request
 $name = $_POST["name"];

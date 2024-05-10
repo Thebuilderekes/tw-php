@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "75997812aa07822cbe55ea6f706f174e",
+    "content-hash": "468624b7b5e182ef1c21929d601717ca",
     "packages": [
         {
             "name": "phanda-framework/dotenv",

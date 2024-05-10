@@ -13,6 +13,13 @@ class Database {
   public function __construct($hostname, $dbname, $username, $password ) {
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/src");
     $dotenv->load();
+
+        
+    $this->hostname = $hostname;
+    $this->dbname = $dbname;
+    $this->username = $username;
+    $this->password = $password;
+
      $hostname = getenv('HOSTNAME');
      $dbname = getenv('DBNAME');
      $username = getenv('USERNAME');

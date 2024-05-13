@@ -10,12 +10,10 @@ $hashedPassword = password_hash($plainPassword, PASSWORD_DEFAULT);
 
 require 'Database.php';
 
-$hostname = $_ENV['HOSTNAME'];
-$dbname = $_ENV['DBNAME'];
-$username= $_ENV['USERNAME'];
-$password = $_ENV['PASSWORD'];
 
-$form_data_db = new Database($hostname, $dbname, $username, $password);
+
+$selectedDatabase = "form_data";
+$form_data_db = new Database($hostname, $dbname, $username, $password, $selectedDatabase);
 $sql = "INSERT INTO user_form_data (name, password) VALUES (:name, :password)";
 $params = [":name" => $name, ":password"=> $hashedPassword];
 $form_data_db->query($sql, $params);

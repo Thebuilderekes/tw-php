@@ -16,16 +16,19 @@
 
             <button type="submit">submit</button>
         </form>
-        <ul>
+        <!-- <ul>
             <?php foreach ($users as $user) :  ?>
                 <li><?= $user['name']; ?></li>
             <?php endforeach;  ?>
-        </ul>
+        </ul> -->
 
         <ul>
             <?php foreach ($notes as $note) :  ?>
                 <li><?= $note['body']; ?></li>
             <?php endforeach;  ?>
-        </ul>
+    </ul>
+
+
+
 </main>
 <?php require("./views/partials/foot.php"); ?>

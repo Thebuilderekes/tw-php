@@ -1,11 +1,15 @@
+## Important checks to run when working with displaying database items on screen
+
+-  Always check that you are calling the key from the column in the database table when trying to display data from a database table. 
+-  Always echo credentials to see if env is grabbing the credentials correctly. 
+- always echo a success  message after each database query method call or any kind of method call to check if the call is successful.
 
 
-## Important checks to run when working with displaying database items on screen 
- always check that you are calling the key from the column in the database table when trying to display data from a database table. 
+## Using mariadb terminal
+- Column field do not require quotation marks like mysql queries.
 
 
-
- Make Database class flexible so that one can switch between .env file credentials depending on the selected database name
+ Make Database class flexible with how different env credentials can be selected so that one can switch between .env file credentials depending on the selected database name
 
  ```php
  public function __construct() {

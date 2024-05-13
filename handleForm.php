@@ -12,8 +12,7 @@ require 'Database.php';
 
 
 
-$selectedDatabase = "form_data";
-$form_data_db = new Database($hostname, $dbname, $username, $password, $selectedDatabase);
+$form_data_db = new Database($hostname, $dbname, $username, $password);
 $sql = "INSERT INTO user_form_data (name, password) VALUES (:name, :password)";
 $params = [":name" => $name, ":password"=> $hashedPassword];
 $form_data_db->query($sql, $params);

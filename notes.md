@@ -1,6 +1,6 @@
 ## Remember to change the password to root in the env file on your macbook
 
-## Code architechture
+## Code architecture
 
 - As far as functionality and extendibility, don't be afraid to create as many files as need to extend your code. Make magic numbers into constants to promote reuseability. Make it work and then branch out for refactor to make code more maintainable and efficient
 
@@ -20,7 +20,7 @@ We have the `user-id` of the notes table as the foreign key to the id in the use
 
 ## Using mariadb terminal
 
-- in mariadb syntax, Column fields does not require quotation marks arround field names like mysql queries.
+- in mariadb syntax, Column fields does not require quotation marks around field names like mysql queries.
 
 Make Database class flexible with how different env credentials can be selected so that one can switch between .env file credentials depending on the selected database name
 
@@ -56,5 +56,8 @@ public function __construct() {
  // Connect to the database (rest of the logic remains the same)
  // ...
 }
-
 ```
+
+### Form validation
+
+- Server side validation made on form to check if any of the inputs are empty on form submit and show an error message if this is the case.

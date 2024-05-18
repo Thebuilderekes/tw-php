@@ -2,7 +2,7 @@
 $heading = "Notes page";
 
 
-  $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+  $name = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 require "./Database.php";
 
@@ -19,13 +19,15 @@ $userparams = [":name" => $name, ":email"=> $email];
 
 if($_SERVER['REQUEST_METHOD'] === "POST"){
 
-if (strlen($_POST['name'] > 0 ) && strlen($_POST['email']) > 0) {
-    $error = [];
+if (strlen($_POST['username'] > 0 ) || strlen($_POST['email']) > 0) {
     $user_db->query($sql, $userparams);
+
+    $error['form_error'] = "Your email has been submitted!";
 }else{
     $error['form_error'] = "please fill out any empty field";
 }
 }
+
 
 $users= $user_db->fetchItems('select * FROM user')->fetchAll(PDO::FETCH_ASSOC);
  $check = "notes.php connection";

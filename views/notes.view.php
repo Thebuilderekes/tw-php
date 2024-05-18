@@ -10,7 +10,9 @@
     <h2><?= $check; ?></h2>
     <form class="flex flex-col mx-12 p-4 items-center border border-1  border-green" action="notes.php"  method="POST">
 
+<?php if (isset($error['form_error'])) : ?>
     <p class="text-red-500"><?= $error['form_error'];?></p>
+<?php endif;?>
       <label>
         Name
         <input class="my-2" type="text" name="username" id="username" required>

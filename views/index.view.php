@@ -4,7 +4,7 @@
 <body class="bg-red-500">
 
  <h1><?= $heading; ?></h1>
-
+ <p><?=$errorMessage?></p>
       <form action="handleForm.php" method="post">
          <label for="name">
          name 

@@ -13,6 +13,7 @@ class Database
   public $dbname;
   public $username;
   public $password;
+  public $statement;
   protected $connection;
   
   public function __construct($hostname, $dbname, $username, $password) {
@@ -20,7 +21,8 @@ class Database
      $this->hostname = $hostname;
      $this->dbname   = $dbname; 
      $this->username = $username;
-     $this->password = $password; 
+    $this->password = $password;
+
 
     // Connect to the database
     try {
@@ -33,28 +35,35 @@ class Database
 
   public function query($sql, $params = []) {
     try {
-      $statement = $this->connection->prepare($sql);
-      $statement->execute($params);
-      //        echo "data entry successful";
+      $this->statement = $this->connection->prepare($sql);
+        $this->statement->execute($params);
+       echo "data entry successful";
       // Adjust based on your expected return type
-      return $statement;
+
+        return $this->fetchStatement();
     } catch (PDOException $e) {
       throw new Exception("Query failed: " . $e->getMessage());
     }
   
   }
 
-  public function fetchItems($sql, $params) {
+  public function fetchItems($sql) {
     try {
-      $statement = $this->connection->prepare($sql);
-      $statement->execute($params);
-        //echo "data entry successful";
-      // Adjust based on your expected return type
-        return $statement;
+      $this->statement = $this->connection->prepare($sql);
+      $this->statement->execute();
+        return $this->fetchStatement();
     } catch (PDOException $e) {
       throw new Exception("Query failed: " . $e->getMessage());
     }
-}
+  }
+
+// fetchItems and query methods use to return the $statement directly in them but this refactor  allows the statement to be a function by itself in order to make it accessible to other methods in the database
+  public function fetchStatement(){
+    
+        return $this->statement;
+
+  } 
 }
 
-  echo "after database";
+
+

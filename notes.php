@@ -1,6 +1,6 @@
 <?php
 require "./Validator.php";
-
+ set_include_path( $_SERVER['DOCUMENT_ROOT'] . '/' );
 $heading = "Notes page";
 
 $name = htmlspecialchars($_POST['username']);
@@ -36,4 +36,4 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
 
 $users= $user_db->fetchItems('select * FROM user')->fetchAll(PDO::FETCH_ASSOC);
 $check = "notes.php connection";
-require("./views/notes.view.php");
+require("views/notes.view.php");

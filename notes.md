@@ -7,6 +7,8 @@
 ## Conventions
 
 - Using Classname::CONSTANT will point the class to the CONSTANT declared inside the file that has the class. You can use this across files by requiring the file that has the class into the file where you want to use it.
+- Using `static` keyword on a method indicated that the method is a pure function and it does not reference any
+  code outside of itself. To use such a static method of that class in , you use `className::method()`
 
 ## How the database works
 

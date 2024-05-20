@@ -1,3 +1,5 @@
 <?php
 $heading = "Service page";
-require("./views/services.view.php");
+ set_include_path( $_SERVER['DOCUMENT_ROOT'] . '/' );
+
+require("views/services.view.php");

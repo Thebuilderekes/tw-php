@@ -1,15 +1,7 @@
 <?php
-<<<<<<< HEAD:pages/notes.php
 require "../Validator.php";
-
-=======
-require "./Validator.php";
- set_include_path( $_SERVER['DOCUMENT_ROOT'] . '/' );
->>>>>>> ccb6762 (fix:code refactor):notes.php
+ require "../Database.php";
 $heading = "Notes page";
-<<<<<<< HEAD:pages/notes.php
-require "../Database.php";
-=======
 
 $name = htmlspecialchars($_POST['username']);
 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
@@ -49,10 +41,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
 }
 
 $users= $user_db->fetchItems('select * FROM user')->fetchAll(PDO::FETCH_ASSOC);
-<<<<<<< HEAD:pages/notes.php
- $check = "notes.php connection";
-require("../views/notes.view.php");
-=======
 $check = "notes.php connection";
-require("views/notes.view.php");
->>>>>>> ccb6762 (fix:code refactor):notes.php
+
+echo $check;
+require("../views/notes.view.php");

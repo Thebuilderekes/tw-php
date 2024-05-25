@@ -16,31 +16,14 @@ class Database
   public $statement;
   protected $connection;
   
-  public function __construct($hostname, $dbname, $username, $password) {
-
-     $this->hostname = $hostname;
-     $this->dbname   = $dbname; 
-     $this->username = $username;
-    $this->password = $password;
-
-
-    // Connect to the database
-    try {
-      $this->connection = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
-      $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-      throw new Exception("Connection failed: " . $e->getMessage());
-    }
-  }
 
   public function query($sql, $params = []) {
     try {
       $this->statement = $this->connection->prepare($sql);
         $this->statement->execute($params);
        echo "data entry successful";
-      // Adjust based on your expected return type
-
         return $this->fetchStatement();
+      //$this->fetchStatement() returns $this->statement
     } catch (PDOException $e) {
       throw new Exception("Query failed: " . $e->getMessage());
     }
@@ -51,7 +34,10 @@ class Database
     try {
       $this->statement = $this->connection->prepare($sql);
       $this->statement->execute();
-        return $this->fetchStatement();
+
+      return $this->fetchStatement();
+
+      //$this->fetchStatement() returns $this->statement
     } catch (PDOException $e) {
       throw new Exception("Query failed: " . $e->getMessage());
     }

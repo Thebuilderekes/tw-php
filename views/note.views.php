@@ -5,13 +5,13 @@
   <body class="bg-gray-200">
     <h1><?= $heading; ?></h1>
     <h2><?= $check; ?></h2>
-    <form class="flex flex-col mx-12 p-4 items-center border border-1  border-green" action="../pages/note.php" method="POST">
+    <form class="flex flex-col mx-12 p-4 items-center border border-1  border-green" action="../controllers/note.php" method="POST">
 
       <?php if (isset($error['form_error'])) : ?>
         <p class="text-red-500"><?= $error['form_error']; ?></p>
       <?php endif; ?>
-      <label for="message"class="flex justify-center items-center gap-2">  
-        message
+      <label for="message"class="flex flex-col justify-center items-center gap-2 text-xl">  
+        Leave a note
 
         <textarea class="my-2" rows="5" cols="20" name="message" id="message"></textarea>
       </label>

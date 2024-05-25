@@ -94,17 +94,17 @@
               >
             </li>
             <li>
-              <a class="md:p-4 py-2 block hover:text-purple-400" href="../pages/about.php"
+              <a class="md:p-4 py-2 block hover:text-purple-400" href="../controllers/about.php"
                 >About</a
               >
             </li>
             <li>
-              <a class="md:p-4 py-2 block hover:text-purple-400" href="../pages/note.php"
+              <a class="md:p-4 py-2 block hover:text-purple-400" href="../controllers/note.php"
                 >Note</a
               >
             </li>
             <li>
-              <a class="md:p-4 py-2 block hover:text-purple-400" href="../pages/services.php"
+              <a class="md:p-4 py-2 block hover:text-purple-400" href="../controllers/services.php"
                 >Services</a
               >
             </li>

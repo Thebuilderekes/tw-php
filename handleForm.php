@@ -5,18 +5,14 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    $name = 
-        $_POST["name"];
+    $name = $_POST["name"];
 $plainPassword = $_POST["password"];
 
 if(empty($_POST["name"]) || empty($_POST['password'] )){
 
-    echo "all fields should be filled";
+    $error = "all fields should be filled";
     die();
 } 
-
-
-
 
 // Hash the password for security
 $hashedPassword = password_hash($plainPassword, PASSWORD_DEFAULT);

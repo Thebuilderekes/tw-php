@@ -2,7 +2,10 @@
 
 ## Code architecture
 
-- As far as functionality and extendibility, don't be afraid to create as many files as need to extend your code. Make magic numbers into constants to promote reuseability. Make it work and then branch out for refactor to make code more maintainable and efficient
+- As far as functionality and extendibility, don't be afraid to create as many files as need to extend your code. Make magic numbers into constants to promote reusability. Make it work and then branch out for refactor to make code more maintainable and efficient
+
+- Public folder should be added to the root and index.php file put in there
+
 
 ## Conventions
 

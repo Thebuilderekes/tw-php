@@ -16,6 +16,15 @@ class Database
   public $statement;
   protected $connection;
   
+  public function __construct($hostname, $dbname, $username, $password ) {
+
+        
+    $this->hostname = $hostname;
+    $this->dbname = $dbname;
+    $this->username = $username;
+    $this->password = $password;
+
+  } // Connect to the database
 
   public function query($sql, $params = []) {
     try {
@@ -23,7 +32,6 @@ class Database
         $this->statement->execute($params);
        echo "data entry successful";
         return $this->fetchStatement();
-      //$this->fetchStatement() returns $this->statement
     } catch (PDOException $e) {
       throw new Exception("Query failed: " . $e->getMessage());
     }
@@ -37,7 +45,6 @@ class Database
 
       return $this->fetchStatement();
 
-      //$this->fetchStatement() returns $this->statement
     } catch (PDOException $e) {
       throw new Exception("Query failed: " . $e->getMessage());
     }

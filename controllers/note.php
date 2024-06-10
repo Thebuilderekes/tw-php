@@ -1,6 +1,6 @@
 <?php
-require "../Validator.php";
- require "../connection.php";
+require "../Core/Validator.php";
+ require "../Core/connection.php";
 $heading = "note page";
 $hostname = $_ENV['HOSTNAME2'];
 $dbname = $_ENV['DBNAME2'];
@@ -37,7 +37,7 @@ $check = "notes.php connection";
 
 echo $check;
 // var_dump($notes_record);
-require("../views/note.views.php");
+require("../views/note.view.php");
 
 
 

@@ -4,19 +4,20 @@
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-
-    $name = $_POST["name"];
+$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 $plainPassword = $_POST["password"];
 
-if(empty($_POST["name"]) || empty($_POST['password'] )){
+if(empty($_POST["email"]) || empty($_POST['password'] )){
 
-    $error = "all fields should be filled";
+    $error['form-error'] = "all fields should be filled";
     die();
 } 
 
 // Hash the password for security
 $hashedPassword = password_hash($plainPassword, PASSWORD_DEFAULT);
-require 'Database.php';
+require './Core/connection.php';
+
+
 
 $hostname = $_ENV['HOSTNAME1'];
 $dbname = $_ENV['DBNAME1'];
@@ -25,19 +26,21 @@ $password = $_ENV['PASSWORD1'];
 
 try {
     // Create a database instance
-    $form_data_db = new Database($hostname, $dbname, $username, $password);
+    $users = new MakeConnection($hostname, $dbname, $username, $password);
 
     // Define SQL query
-    $sql = "INSERT INTO user_form_data (name, password) VALUES (:name, :password)";
+    $sql = "INSERT INTO users (email, password) VALUES (:email, :password)";
 
     // Define parameters
-    $params = [":name" => $name, ":password" => $hashedPassword];
+    $params = [":email" => $email, ":password" => $hashedPassword];
 
-    // Execute SQL query
-      $form_data_db->query($sql, $params);
+
+
+      $users->query($sql, $params);
 
     echo "Data inserted successfully!";
-} catch (Exception $e) {
+  } catch (Exception $e) {
+
     echo "Error: " . $e->getMessage();
 }
 

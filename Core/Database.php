@@ -4,7 +4,7 @@ require "../vendor/autoload.php";
 
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
 class Database
@@ -38,6 +38,16 @@ class Database
   
   }
 
+  public function checkInput($input, $inputsql){
+
+
+    $this->statement = $this->connection->prepare($inputsql);
+    $this->statement->execute([$input]);
+     $result = $this->statement->fetch();
+       return $result;
+  }
+
+
   public function fetchItems($sql) {
     try {
       $this->statement = $this->connection->prepare($sql);
@@ -57,12 +67,5 @@ class Database
 
   }
 
-
-
-
-
-
 }
-
-
 

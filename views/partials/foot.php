@@ -1,16 +1,15 @@
 <script>
-const button = document.querySelector('#menu-button');
-const menu = document.querySelector('#menu');
+const button = document.querySelector('#hamburger-btn');
+const menu = document.querySelector('#mobile-menu');
+const userForm = document.getElementById('user-form');
+
 
 
 button.addEventListener('click', () => {
-  menu.classList.toggle('hidden');
+menu.classList.toggle('hidden');
+
+console.log("button click")
 });
-
-
-    document.getElementById('message-form').addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent default form submission
-
 
 
  </script>

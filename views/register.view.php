@@ -11,7 +11,7 @@
 <main class="flex flex-col items-center">
 
            <h2 class="text-xl font-bold">Register Your account</h2>
-    <form class= "flex items-center border-2 w-1/2 p-4 rounded border-blue-300  flex-col gap-2" id="user-form" action="../controllers/register.php" method="POST">
+    <form class= "flex items-center border-2 w-1/2 p-4 rounded border-blue-300  flex-col gap-2" id="user-form" action="../controllers/register-process.php" method="POST">
 
       <?php if (isset($error['form_error'])) : ?>
         <p class="text-red-500"><?= $error['form_error']; ?></p>
@@ -36,4 +36,4 @@
       </ul>
 </main>
 <?php require("partials/foot.php"); ?>
-
+<?php require("../controllers/register-process.php"); ?>

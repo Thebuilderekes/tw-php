@@ -1,17 +1,14 @@
 <?php require("partials/head.php"); ?>
 <?php require("partials/nav.php"); ?>
+
+<?php require('../controllers/display-users.php'); ?>
   <body class="bg-grey-100">
 
-    <?php 
-   
-     $heading = "Register page";
-    ?>
     <h1><?= $heading; ?></h1>
 
 <main class="flex flex-col items-center">
-
-           <h2 class="text-xl font-bold">Register Your account</h2>
-    <form class= "flex items-center border-2 w-1/2 p-4 rounded border-blue-300  flex-col gap-2" id="user-form" action="../controllers/register-process.php" method="POST">
+    <h2 class="text-xl font-bold">Register Your account</h2>
+    <form class= "flex items-center border-2 w-1/2 p-4 rounded border-blue-300  flex-col gap-2" id="user-form" action="../controllers/register.php" method="POST">
 
       <?php if (isset($error['form_error'])) : ?>
         <p class="text-red-500"><?= $error['form_error']; ?></p>
@@ -35,5 +32,6 @@
       <?php endforeach;  ?>
       </ul>
 </main>
+
+<?php require "../controllers/register-process.php";?>
 <?php require("partials/foot.php"); ?>
-<?php require("../controllers/register-process.php"); ?>

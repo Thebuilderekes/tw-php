@@ -1,9 +1,11 @@
 <?php
+
+ require_once "../Core/Validator.php";
+ require_once "../Core/connection.php";
 $heading = "Register page";
 
-require "../Core/Validator.php";
- require "../Core/connection.php";
-$heading = "note page";
+
+
 $hostname = $_ENV['HOSTNAME1'];
 $dbname = $_ENV['DBNAME1'];
 $username = $_ENV['USERNAME1'];
@@ -19,40 +21,37 @@ $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 $sql = "INSERT INTO users(email, password) VALUES (:email, :password)";
 // $validator object is used from Validator class give a reusable method string check on any input that needs to be checked
-$validator = new Validator();
+$validator = new Validator_();
 
-$checkEmailSql = "SELECT COUNT(*) AS email_count FROM users WHERE email = ?";
+  //$emailCheckParams = [":email" => $email];
+//$checkEmailSql = "SELECT COUNT(*) AS email_count FROM users WHERE email = ?";
 //submit form input to users table
 if($_SERVER['REQUEST_METHOD'] === "POST"){
 
-    // check i 
-    $result = $users->checkInput($email, $checkEmailSql);
+    //$result = $users->checkInput($emailCheckParams, $checkEmailSql);
 
 // Check if the email is valid and if email already exists in the database
-  if ($validator->isValidEmail($_POST['email']) && $result['email_count'] === 0){
+  if ($validator->isValidEmail($_POST['email'])){
 
     $userparams = [":email" => $email, ":password"=> $hashedPassword ];
 
+
+
     $users->query($sql, $userparams);
 
-    $_SESSION['user'] = [
-      'email' => $email
-    ];
 
-    $error['form_error'] = "Your details have been submitted!";
-    header("Location: ../public/index.php");
- exit();
 
-} else if (!$validator->isValidEmail($_POST['email'])) {
-    $error['form_error'] = "Please enter a valid email address.";
+    $error['form_error'] = "Your account has been created, you can now login!";
+  } else if (!$validator->isValidEmail($_POST['email'])) {
+
+        $error['form_error'] = "Please enter a valid email address.";
+
   } else {
-    $error['form_error'] = "An account with this email has already been created.";
+
+        $error['form_error'] = "An account with this email has already been created.";
   }
 
 }
 
 
-$usernames= $users->fetchItems('select * FROM users')->fetchAll(PDO::FETCH_ASSOC);
-$check = "register.process connection";
 
-echo $check;

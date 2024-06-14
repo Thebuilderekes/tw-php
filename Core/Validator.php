@@ -1,6 +1,7 @@
 <?php
 
-class Validator
+
+class Validator_
 {
 
     public function string($value){
